@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather Application</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <style type="text/css">
+                body{
+                    margin-top: 10px;
+                }
+    </style>
+</head>
+<body>       
+<div class="container-fluid">
+        <nav class="navbar is-dark">
+                <div class="container">
+                <div class="navbar-brand">
+                      <a class="navbar-item" href="#" style="font-weight:bold;">
+                                  <h2>Weather Application</h2>
+                      </a>
+                      <span class="navbar-burger burger" data-target="navMenu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </span>
+                    </div>
+                <div id="navMenu" class="navbar-menu">
+                <div class="navbar-end">
+                        <a href="#" class="navbar-item is-active">Home</a>
+                        <a href="#" class="navbar-item">Blog</a>
+                        <a href="#" class="navbar-item">Forum</a>
+                        <a href="#" class="navbar-item">Report</a>
+                        <a href="#" class="navbar-item">Examples</a>
+                      </div>
+                </div>
+                </div>
+                </nav> 
+</div>    
+<div class="container-fluid">
+        <section class="hero is-primary">
+                <div class="hero-body">
+                    <div class="container">
+                            <div style="text-align: center;">
+                                <h1 style="font-size: 40px;">
+                                    <span class="glyphicon glyphicon-cloud" aria-hidden="true">
+                                    </span> 
+                                    What's the weather like?
+                                </h1>
+                            <div>    
+                    </div>
+                </div>
+            </section>
+</div>    
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-offset-4 is-4">
+                <form method="POST">
+                    <div class="field has-addons">
+                        <div class="control is-expanded">
+                            <input class="input" name="city" type="text" placeholder="City Name">
+                        </div>
+                        <div class="control">
+                            <button class="button is-info">
+                                Add City
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <div class="columns is-desktop">
+            <div class="column is-offset-4 is-4">
+                {% for weather in weather_data %}
+                <div class="box">
+                    <article class="media">
+                        <div class="media-left">
+                            <figure class="image is-50x50">
+                                <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <div class="content">
+                                <p>
+                                    <span class="title">{{ weather.city }}</span>
+                                    <br>
+                                    <span class="subtitle">{{ weather.temperature }}° C</span>
+                                    <br> {{ weather.description }}
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                {% endfor %} 
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="footer-dark">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="#">Web design</a></li>
+                            <li><a href="#">Development</a></li>
+                            <li><a href="#">Hosting</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="#">Company</a></li>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 item text">
+                        <h3>Weather Application</h3>
+                        <p>This is The Simple Weather Application That Shows The Weather Of The cities.Weather forecasting is the application of science and technology to predict the conditions of the atmosphere for a given location and time. </p>
+                    </div>
+                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                </div>
+                <p class="copyright">Weather Application © 2019</p>
+            </div>
+        </footer>
+    </div>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
